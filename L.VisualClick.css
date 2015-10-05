@@ -1,0 +1,121 @@
+@-moz-keyframes leaflet-visualclick-pulsate {
+    from {
+        -moz-transform: scale(0.5);
+        opacity: 1.0;
+    }
+    95% {
+        -moz-transform: scale(1.3);
+        opacity: 0;
+    }
+    to {
+        -moz-transform: scale(0.7);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes leaflet-visualclick-pulsate {
+    from {
+        -webkit-transform: scale(0.5);
+        opacity: 1;
+    }
+    95% {
+        -webkit-transform: scale(1.3);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: scale(0.7);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes leaflet-visualclick-pulsate-touch {
+    from {
+        -moz-transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        -moz-transform: scale(0.2);
+        opacity: 0.0;
+    }
+}
+@-webkit-keyframes leaflet-visualclick-pulsate-touch {
+    from {
+        -webkit-transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        -webkit-transform: scale(0.2);
+        opacity: 0.0;
+    }
+}
+
+.leaflet-visualclick{
+    width: 1px;
+    height: 1px;
+    background-repeat: no-repeat;
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+        /* Safari */
+        -webkit-transition-property:all;
+        -webkit-transition-duration:1s;
+        -webkit-transition-timing-function:ease-in-out;
+        -webkit-transition-delay:0s;
+}
+
+
+.leaflet-visualclick i.pulse {
+    display: block;
+
+    -moz-animation: leaflet-visualclick-pulsate .7s ease-out 1;
+    -webkit-animation: leaflet-visualclick-pulsate .7s ease-out 1;
+    border: 0px;
+    /* make a circle */
+    -moz-border-radius:60px;
+    -webkit-border-radius:60px;
+    border-radius:60px;
+    /* multiply the shadows, inside and outside the circle */
+    /*-moz-box-shadow:inset 0 0 5px #3888FF, inset 0 0 5px #3888FF, inset 0 0 5px #3888FF, 0 0 5px #3888FF, 0 0 5px #3888FF, 0 0 5px #3888FF;*/
+    /*-webkit-box-shadow:inset 0 0 5px #3888FF, inset 0 0 5px #3888FF, inset 0 0 5px #3888FF, 0 0 5px #3888FF, 0 0 5px #3888FF, 0 0 5px #3888FF;*/
+    box-shadow: inset 0 0 25px -1px #E1E3E4, 0 0 10px -1px #C5C5C5;
+    /* set the ring's new dimension and re-center it */
+    height:60px;
+    margin:-12px 0 0 -12px;
+    width:60px;
+}
+
+
+.leaflet-visualclick.ielt9 i.pulse {
+    display: block;
+
+    border: 0px;
+    /* make a circle */
+    border-radius:60px;
+    /* multiply the shadows, inside and outside the circle */
+
+    box-shadow: inset 0 0 25px -1px #62c6e7, 0 0 10px -1px #62c6e7;
+    /* set the ring's new dimension and re-center it */
+    height:60px;
+    margin:-12px 0 0 -12px;
+    width:60px;
+}
+
+.leaflet-visualclick i.touchpulse {
+    display: block;
+
+    -moz-animation: leaflet-visualclick-pulsate-touch .7s ease-out 1;
+    -webkit-animation: leaflet-visualclick-pulsate-touch .7s ease-out 1;
+    border:0px;
+    /* make a circle */
+    -moz-border-radius:160px;
+    -webkit-border-radius:160px;
+    border-radius:160px;
+    /* multiply the shadows, inside and outside the circle */
+    -moz-box-shadow:inset 0 0 25px 5px #E1E3E4, 0 0 10px 4px #C5C5C5;
+    -webkit-box-shadow:inset 0 0 25px 5px #E1E3E4, 0 0 10px 4px #C5C5C5;
+    box-shadow: inset 0 0 25px 5px #E1E3E4, 0 0 10px 4px #C5C5C5;
+    /* set the ring's new dimension and re-center it */
+    height:160px;
+    margin:-62px 0 0 -62px;
+    width:160px;
+}
