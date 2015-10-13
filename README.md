@@ -6,7 +6,7 @@ A plugin that adds visual feedback when user clicks/taps the map. Useful for whe
 - `npm install` - This will download dependencies, and run a build upon completion
 
 ### Run the demo
-- Open up the `demo.html` file in a browser and watch the magic!
+- Open up the `demo/demo.html` file in a browser and watch the magic!
 
 
 
