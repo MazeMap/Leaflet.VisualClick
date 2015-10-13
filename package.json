@@ -5,9 +5,11 @@
   "main": "dist/L.VisualClick.js",
   "scripts": {
 
-    "postinstall": "node_modules/gobble-cli/lib/index.js build -f dist",
-    "prepublish": "node_modules/gobble-cli/lib/index.js build -f dist",
+    "build": "node_modules/gobble-cli/lib/index.js build -f dist",
+    "postinstall": "npm run-script build",
+    "prepublish": "npm run-script build",
     "watch": "node_modules/gobble-cli/lib/index.js watch -f dist",
+    "start": "npm run-script watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
