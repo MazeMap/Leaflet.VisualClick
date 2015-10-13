@@ -13,13 +13,9 @@ L.Map.VisualClick = L.Handler.extend({
         var touchMode = this._map.options.visualClickMode === 'touch' ? true : false;
 
         return L.divIcon({
-            className: "leaflet-visualclick",    // See L.VisualClick.css
-            iconSize: [34, 34],
-            iconAnchor: [18, 18],
-            popupAnchor: [0, -20],
-            labelAnchor: [11, -3],
-            clickable: false,
-            html: '<i class="'+ (touchMode ? 'touchpulse' : 'pulse') +'"></i>'
+            className: "leaflet-visualclick-icon" + (touchMode ? '-touch' : ''),    // See L.VisualClick.css
+            iconSize: [0, 0],
+            clickable: false
         });
 
     },
@@ -35,7 +31,7 @@ L.Map.VisualClick = L.Handler.extend({
 
         window.setTimeout(function(){
             if(map){
-                marker.removeFrom(map);
+                marker.remove();
             }
         }.bind(this), map.options.visualClick.removeTimeout || 450);    // Should somewhat match the css animation to prevent loops
 
