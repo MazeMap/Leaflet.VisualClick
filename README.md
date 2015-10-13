@@ -19,6 +19,17 @@ Copy these files and include them as you normally would
 ### That's it
 - it should work now :)
 
+### Browser compatibility
+Uses CSS3 animations, so basically follows this table: http://caniuse.com/#search=animation
+
+Tested in
+- Chrome 45 @ OSX
+- Safari 8.0.7 @ OSX
+- Firefox 41.01 @ OSX
+- IE10 @ Windows 8
+- IE11 @ Windows 8.1
+- Chrome 45 @ iPhone iOS 9
+- Safari @ iPhone iOS 9
 
 ----
 
