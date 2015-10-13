@@ -28,7 +28,6 @@
   "dependencies": {
     "gobble": "^0.10.2",
     "gobble-autoprefixer": "^0.1.1",
-    "gobble-cli": "^0.5.0",
-    "gobble-zip": "0.0.2"
+    "gobble-cli": "^0.5.0"
   }
 }

@@ -16,6 +16,5 @@ var prefixed = gobble('src').transform('autoprefixer', {
 });
 
 module.exports = gobble([
-	prefixed,
-	prefixed.transform('zip', {dest: 'L.VisualClick.zip'})
+	prefixed
 ]);
