@@ -12,6 +12,7 @@
     <script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet-src.js"></script>
 
     <link rel="stylesheet" href="L.VisualClick.css" />
+
     <script src="L.VisualClick.js"></script>
 
 </head>
@@ -28,17 +29,13 @@
     </div>
 
 
-    <script src="L.VisualClick.js"></script>
-
     <script>
 
         map = L.map('map').setView([63.41853193057004, 10.403741598129272], 18);
 
         L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
         }).addTo(map);
-
-        L.visualClick({click: true, contextmenu: true, map: map});
 
     </script>
 
