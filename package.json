@@ -4,9 +4,11 @@
   "description": "Add visual feedback to touches/clicks on a LeafletJS map",
   "main": "dist/L.VisualClick.js",
   "scripts": {
+
     "postinstall": "node_modules/gobble-cli/lib/index.js build -f dist",
     "prepublish": "node_modules/gobble-cli/lib/index.js build -f dist",
-    "watch": "node_modules/gobble-cli/lib/index.js watch -f dist"
+    "watch": "node_modules/gobble-cli/lib/index.js watch -f dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

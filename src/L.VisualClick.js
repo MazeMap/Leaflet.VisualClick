@@ -1,80 +1,59 @@
+/*
+ * L.VisualClick v2.0
+ * Description: A plugin that adds visual feedback when user clicks/taps the map. Useful for when you have a delay on the clickEvents for async fetching of data, or implmentation of Leaflet.singleclick
+ * Example: L.visualClick({map: leafletMap}); //Just works
+ * Author: Dag Jomar Mersland (twitter: @dagjomar)
+ */
 
-// Creates a "click pulse" every time the user clicks/points/taps the map.
-// Heavily based on https://github.com/mapshakers/leaflet-icon-pulse
 
+var iconPulsing = L.divIcon({
+    className: "leaflet-visualclick",    // See L.VisualClick.css
+    iconSize: [34, 34],
+    iconAnchor: [18, 18],
+    popupAnchor: [0, -20],
+    labelAnchor: [11, -3],
+    clickable: false,
+    html: '<i class="'+ (L.Browser.touch ? 'touchpulse' : 'pulse') +'"></i>'
+});
 
 L.Map.VisualClick = L.Handler.extend({
 
-	_pulse: L.divIcon({
-		className: 'leaflet-pulsing-icon',
-		iconSize: [0, 0]
-	}),
+    _visualIcon: iconPulsing,
 
-	_eventName: L.Browser.touch ? 'touchstart' : 'mousedown',
+    _eventName: 'click',
 
-	_removePulse: function(marker) {
-		return function() {
-			marker.remove();
-		};
-	},
+    _onClick: function(e) {
 
-	_onMouseDown: function(ev) {
-		var point;
+        var map = this._map;
 
-		if (ev.detail > 1) {
-			// This is a dblclick instead
-			// Apparently listening to a 'mousedown' event cancels 'dblclick'
-			// events, so dispatch one manually.
-			var newEv = new MouseEvent('dblclick', ev);
-			this._container.dispatchEvent(newEv);
-			return true;
-		}
+        var latlng = e.latlng;
+        var marker = L.marker(latlng, {pane: 'shadowPane', icon: iconPulsing, interactive: false}).addTo(map);
 
-		// Note that the code uses clientX and clientY, which are relative to
-		// the whole browser screen, and not to the map container. This code
-		// will only work as long as the map covers the whole browser window.
-		if (ev.hasOwnProperty('changedTouches')) {  // TouchEvent
-			var touch = ev.changedTouches[0];
-			point = [touch.clientX, touch.clientY];
-		} else {    // MouseEvent
-			point = [ev.clientX, ev.clientY];
-		}
+        window.setTimeout(function(){
+            if(map){
+                marker.removeFrom(map);
+            }
+        }.bind(this), map.options.visualClick.removeTimeout || 450);    // Should somewhat match the css animation to prevent loops
 
-		var latlng = map.containerPointToLatLng(point);
-		var marker = L.marker(latlng, {icon: this._pulse, interactive: false}).addTo(map);
+        return true;
+    },
 
-		var removeFn = this._removePulse(marker);
+    addHooks: function () {
+        this._map.on('click contextmenu', this._onClick, this);
+    },
 
-		// CSS animation is 700 msec long
-		window.setTimeout(L.bind(function(){
-			removeFn();
-			map.off('dblclick touchmove dragstart boxzoomstart', removeFn ,this);
-		}, this), 750);
-
-		// Cancel the pulse if double click or user starts dragging
-		map.on('dblclick touchmove dragstart boxzoomstart', removeFn, this);
-		return true;
-	},
-
-	addHooks: function() {
-		this._container = this._map.getContainer();
-		L.DomEvent.on(this._container, this._eventName, this._onMouseDown, this);
-	},
-
-	removeHooks: function() {
-		L.DomEvent.off(this._container, this._eventName, this._onMouseDown, this);
-	}
+    removeHooks: function () {
+        this._map.off('click contextmenu', this._onClick, this);
+    },
 
 });
-
 
 
 L.Map.mergeOptions({
-	// Skip browsers which don't support CSS animations (IE8, IE9)
-	visualClick: L.Browser.any3d
+    visualClick: L.Browser.any3d ? {  // true by default for browsers with CSS transforms{
+        removeTimeout: 600
+    } : null
 });
 
-
 L.Map.addInitHook('addHandler', 'visualClick', L.Map.VisualClick);
-
 
