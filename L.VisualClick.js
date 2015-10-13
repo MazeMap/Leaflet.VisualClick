@@ -62,7 +62,7 @@ L.Map.VisualClick = L.Handler.extend({
 L.Map.mergeOptions({
     visualClick: {
         supportsTransitions: true,
-        removeTimeout: 690
+        removeTimeout: 450
     }
 });
 
