@@ -1,0 +1,28 @@
+{
+  "name": "Leaflet.VisualClick",
+  "version": "1.0.0",
+  "homepage": "https://github.com/MazeMap/Leaflet.VisualClick",
+  "authors": [
+    "Dag Jomar <dagjomar@mazemap.no>"
+  ],
+  "description": "Add visual feedback to touches/clicks on a LeafletJS map",
+  "main": "dist/L.VisualClick.js",
+  "moduleType": [],
+  "keywords": [
+    "map",
+    "leafletjs",
+    "click",
+    "feedback"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet": "~1.0.0-beta.1"
+  }
+}

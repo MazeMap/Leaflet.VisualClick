@@ -1,0 +1,35 @@
+{
+  "name": "Leaflet.VisualClick",
+  "version": "1.0.0",
+  "description": "Add visual feedback to touches/clicks on a LeafletJS map",
+  "main": "dist/L.VisualClick.js",
+  "scripts": {
+
+    "build": "node_modules/gobble-cli/lib/index.js build -f dist",
+    "postinstall": "npm run-script build",
+    "prepublish": "npm run-script build",
+    "watch": "node_modules/gobble-cli/lib/index.js watch -f dist",
+    "start": "npm run-script watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MazeMap/Leaflet.VisualClick.git"
+  },
+  "keywords": [
+    "map",
+    "leaflet",
+    "click",
+    "feedback"
+  ],
+  "author": "Dag Jomar <dagjomar@mazemap.no>",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/MazeMap/Leaflet.VisualClick/issues"
+  },
+  "dependencies": {
+    "gobble": "^0.10.2",
+    "gobble-autoprefixer": "^0.1.1",
+    "gobble-cli": "^0.5.0"
+  }
+}

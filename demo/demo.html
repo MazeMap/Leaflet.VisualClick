@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>L.VisualClick DEMO</title>
+
+	<meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+
+
+	<link rel="stylesheet" type="text/css" href="https://leafletjs-cdn.s3.amazonaws.com/content/build/master/leaflet.css" />
+	<script src="https://leafletjs-cdn.s3.amazonaws.com/content/build/master/leaflet.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../dist/L.VisualClick.css" />
+	<script src="../dist/L.VisualClick.js"></script>
+
+
+  <style type="text/css">
+    html,body{
+      font-family: 'arial', sans-serif;
+    }
+    body{
+      width: 100%; height: 100%; position: absolute; top: 0px; left; 0px; margin: 0px; padding: 0px;
+    }
+
+    #header{
+      padding: 10px; box-sizing: border-box;
+      background-color: #22ACFF;
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <div id="header">
+      <h3>L.VisualClick Demo</h3>
+      <p>Just try to click or tap the map</p>
+      <p>
+
+        <button style="position: relative;" id="button-enable">Enable visual clicks</button>
+        <button style="position: relative;" id="button-disable">Disable visual clicks</button>
+
+      </p>
+    </div>
+
+    <div id="map" style="position: absolute; top: 150px; bottom: 0px; left: 0px; right: 0px;"></div>
+
+    <script type="text/javascript">
+
+        map = L.map('map',{
+          //visualClick: false, //can be disabled
+          //visualClickMode: 'touch', //A default detection is done, but you can override...
+          visualClickEvents: 'click contextmenu' //can be multiple space-seperated events, like 'click', 'contextmenu', 'dblclick'...
+        });
+
+        map.setView([63.41853193057004, 10.403741598129272], 18);
+
+        L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
+           "attribution": '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+        }).addTo(map);
+
+        L.DomEvent.on(document.querySelector('#button-enable'), 'click', function(){
+          map.visualClick.enable();
+        });
+
+        L.DomEvent.on(document.querySelector('#button-disable'), 'click', function(){
+          map.visualClick.disable();
+        });
+
+     </script>
+
+</body>
+
+
+</html>
