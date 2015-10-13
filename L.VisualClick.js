@@ -16,14 +16,9 @@ var iconPulsing = L.divIcon({
     html: '<i class="'+ (L.Browser.touch ? 'touchpulse' : 'pulse') +'"></i>'
 });
 
-L.visualClick = function (options) {
-    return new L.VisualClick(options);
-};
-
-
 L.Map.VisualClick = L.Handler.extend({
 
-    _pulse: iconPulsing,
+    _visualIcon: iconPulsing,
 
     _eventName: 'click',
 
@@ -34,16 +29,11 @@ L.Map.VisualClick = L.Handler.extend({
         var latlng = e.latlng;
         var marker = L.marker(latlng, {pane: 'shadowPane', icon: iconPulsing, interactive: false}).addTo(map);
 
-        //Check for need transition support
-        if(map.options.visualClick.supportsTransitions === false){
-            $(marker._icon).addClass('ielt9').find('i.pulse').css({'width': 30, 'height': 30, 'margin' : '0px 0 0 0px', 'border': '1px solid #62c6e7', 'opacity': 1})
-            .animate({width: 60, height: 60, 'margin': '-12px 0 0 -12px', opacity: 0}, 450, 'linear');
-        }
         window.setTimeout(function(){
             if(map){
                 marker.removeFrom(map);
             }
-        }.bind(this), map.options.visualClick.removeTimeout);    // CSS animation is 450 msec long
+        }.bind(this), map.options.visualClick.removeTimeout || 450);    // Should somewhat match the css animation to prevent loops
 
         return true;
     },
@@ -60,10 +50,9 @@ L.Map.VisualClick = L.Handler.extend({
 
 
 L.Map.mergeOptions({
-    visualClick: {
-        supportsTransitions: true,
-        removeTimeout: 450
-    }
+    visualClick: L.Browser.any3d ? {  // true by default for browsers with CSS transforms{
+        removeTimeout: 600
+    } : null
 });
 
 L.Map.addInitHook('addHandler', 'visualClick', L.Map.VisualClick);

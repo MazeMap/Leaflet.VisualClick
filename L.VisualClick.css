@@ -84,22 +84,6 @@
     width:60px;
 }
 
-
-.leaflet-visualclick.ielt9 i.pulse {
-    display: block;
-
-    border: 0px;
-    /* make a circle */
-    border-radius:60px;
-    /* multiply the shadows, inside and outside the circle */
-
-    box-shadow: inset 0 0 25px -1px #62c6e7, 0 0 10px -1px #62c6e7;
-    /* set the ring's new dimension and re-center it */
-    height:60px;
-    margin:-12px 0 0 -12px;
-    width:60px;
-}
-
 .leaflet-visualclick i.touchpulse {
     display: block;
 
