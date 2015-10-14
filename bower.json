@@ -6,7 +6,7 @@
     "Dag Jomar <dagjomar@mazemap.no>"
   ],
   "description": "Add visual feedback to touches/clicks on a LeafletJS map",
-  "main": "dist/L.VisualClick.js",
+  "main": ["dist/L.VisualClick.js", "dist/L.VisualClick.css"],
   "moduleType": [],
   "keywords": [
     "map",
@@ -20,7 +20,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src"
   ],
   "dependencies": {
     "leaflet": "~1.0.0-beta.1"
