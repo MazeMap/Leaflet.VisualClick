@@ -1,0 +1,105 @@
+/*
+* Heavily based on the CSS for https://github.com/mapshakers/leaflet-icon-pulse
+*
+* Modified to get rid of the opaque circle, and tweaked the pulse to be subtler.
+*/
+
+.leaflet-visualclick-icon {
+    border-radius: 100%;
+}
+
+.leaflet-visualclick-icon:after {
+    content: "";
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    margin-left: -30px;
+    margin-top: -30px;
+
+    box-shadow: inset 0 0 25px -1px #E1E3E4, 0 0 10px -1px #C5C5C5;
+
+    -webkit-animation: visualclick-pulsate 0.7s ease-out;
+
+            animation: visualclick-pulsate 0.7s ease-out;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+    opacity: 0;
+}
+
+.leaflet-visualclick-icon-touch:after {
+    content: "";
+    border-radius: 100%;
+    height: 140px;
+    width: 140px;
+    position: absolute;
+    margin-left: -70px;
+    margin-top: -70px;
+
+    box-shadow: inset 0 0 25px -1px #E1E3E4, 0 0 10px -1px #C5C5C5;
+
+    -webkit-animation: visualclick-pulsate-touch 0.7s ease-out;
+
+            animation: visualclick-pulsate-touch 0.7s ease-out;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+    opacity: 0;
+}
+
+@-webkit-keyframes visualclick-pulsate {
+    0% {
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1.3);
+                transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+@keyframes visualclick-pulsate {
+    0% {
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1.3);
+                transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+
+@-webkit-keyframes visualclick-pulsate-touch {
+    from {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+        opacity: 0.0;
+    }
+}
+
+
+@keyframes visualclick-pulsate-touch {
+    from {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        -webkit-transform: scale(0.2);
+                transform: scale(0.2);
+        opacity: 0.0;
+    }
+}
