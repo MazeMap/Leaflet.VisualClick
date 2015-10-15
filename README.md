@@ -1,5 +1,5 @@
 # Leaflet.VisualClick
-A plugin that adds visual feedback when user clicks/taps the map. Useful for when you have a delay on the clickEvents for async fetching of data, or implmentation of Leaflet.singleclick - or just because it looks great :)
+A plugin that adds visual feedback when user clicks/taps the map. Useful for when you have a delay on the clickEvents for async fetching of data, or implementation of Leaflet.singleclick - or just because it looks great :)
 
 
 ![Screencapture GIF](demo/L.VisualClick.Demo.gif)
@@ -33,6 +33,12 @@ Tested in
 
 ----
 
+Behaviour is bugged in IE10 due to the lack of `pointer-events: none` in CSS.
+This means that the decoration added by this plugin will catch events meant for
+whatever overlay might be underneath the clicked point. This can be worked around
+by using a map pane underneath the map panes (at pane z-index 3,
+`map.createPane('paneName', 3)`) used for overlays and markers (but
+of course this means overlays might overlap the visual click effect).
 
 ### Configurations
 There are some options you can configure if you really need to.
@@ -43,6 +49,7 @@ Here's an example:
       //visualClick: false, //can be disabled
       //visualClickMode: 'touch', //A default detection is done, but you can override...
       visualClickEvents: 'click contextmenu' //can be multiple space-seperated events, like 'click', 'contextmenu', 'dblclick'...
+      //visualClickPane: 'shadowPane'
     });
 ```
 

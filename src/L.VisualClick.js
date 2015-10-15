@@ -27,7 +27,7 @@ L.Map.VisualClick = L.Handler.extend({
 
 		var latlng = e.latlng;
 		var marker = L.marker(latlng, {
-			pane: 'shadowPane',
+			pane: this._map.options.visualClickPane,
 			icon: this._visualIcon,
 			interactive: false
 		}).addTo(map);
@@ -59,6 +59,7 @@ L.Map.mergeOptions({
 	visualClick: L.Browser.any3d ? true : false, //Can be true, desktop, touch, false. Not straight forward to use L.Browser.touch flag because true on IE10
 	visualClickMode: L.Browser.touch && L.Browser.mobile ? 'touch' : 'desktop', //Not straight forward to use only L.Browser.touch flag because true on IE10 - so this is slightly better
 	visualClickEvents: 'click contextmenu', //Standard leaflety way of defining which events to hook on to
+	visualClickPane: 'shadowPane'	// Map pane where the pulse markers will be showh
 });
 
 L.Map.addInitHook('addHandler', 'visualClick', L.Map.VisualClick);
