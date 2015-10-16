@@ -35,10 +35,9 @@ Tested in
 
 Behaviour is bugged in IE10 due to the lack of `pointer-events: none` in CSS.
 This means that the decoration added by this plugin will catch events meant for
-whatever overlay might be underneath the clicked point. This can be worked around
-by using a map pane underneath the map panes (at pane z-index 3,
-`map.createPane('paneName', 3)`) used for overlays and markers (but
-of course this means overlays might overlap the visual click effect).
+whatever overlay might be underneath the clicked point. This is worked around
+by using a map pane between the tiles pane and the overlays pane (but
+of course this means overlays will overlap the visual click effect).
 
 ### Configurations
 There are some options you can configure if you really need to.
