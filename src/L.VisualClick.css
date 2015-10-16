@@ -67,3 +67,7 @@
 		opacity: 0.0;
 	}
 }
+
+
+.leaflet-pane.leaflet-ie10-visual-click-pane-pane { z-index: 300; }
+

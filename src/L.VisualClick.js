@@ -45,6 +45,11 @@ L.Map.VisualClick = L.Handler.extend({
 		if(this._visualIcon === null){
 			this._visualIcon = this._makeVisualIcon();
 		}
+
+		if (this._map.options.visualClickPane === 'ie10-visual-click-pane') {
+			this._map.createPane('ie10-visual-click-pane');
+		}
+
 		this._map.on(this._map.options.visualClickEvents, this._onClick, this);
 	},
 
@@ -59,7 +64,9 @@ L.Map.mergeOptions({
 	visualClick: L.Browser.any3d ? true : false, //Can be true, desktop, touch, false. Not straight forward to use L.Browser.touch flag because true on IE10
 	visualClickMode: L.Browser.touch && L.Browser.mobile ? 'touch' : 'desktop', //Not straight forward to use only L.Browser.touch flag because true on IE10 - so this is slightly better
 	visualClickEvents: 'click contextmenu', //Standard leaflety way of defining which events to hook on to
-	visualClickPane: 'shadowPane'	// Map pane where the pulse markers will be showh
+	visualClickPane: (L.Browser.ie && document.documentMode === 10) ?
+		'ie10-visual-click-pane' :
+		'shadowPane'	// Map pane where the pulse markers will be showh
 });
 
 L.Map.addInitHook('addHandler', 'visualClick', L.Map.VisualClick);
