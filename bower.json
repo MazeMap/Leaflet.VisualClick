@@ -25,5 +25,8 @@
   ],
   "dependencies": {
     "leaflet": "~1.0.0-beta.1"
+  },
+  "devDependencies":{
+    "Leaflet.singleclick": "git@github.com:MazeMap/Leaflet.singleclick.git#dj-ignore-events"
   }
 }
