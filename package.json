@@ -1,6 +1,6 @@
 {
   "name": "Leaflet.VisualClick",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Add visual feedback to touches/clicks on a LeafletJS map",
   "main": "dist/L.VisualClick.js",
   "scripts": {
