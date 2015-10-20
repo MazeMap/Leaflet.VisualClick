@@ -6,6 +6,7 @@
 
 .leaflet-visualclick-icon {
     border-radius: 100%;
+    pointer-events: none;
 }
 
 .leaflet-visualclick-icon:after {
@@ -16,6 +17,7 @@
     position: absolute;
     margin-left: -30px;
     margin-top: -30px;
+    pointer-events: none;
 
     box-shadow: inset 0 0 25px -1px #E1E3E4, 0 0 10px -1px #C5C5C5;
 
@@ -37,6 +39,7 @@
     position: absolute;
     margin-left: -70px;
     margin-top: -70px;
+    pointer-events: none;
 
     box-shadow: inset 0 0 25px -1px #E1E3E4, 0 0 10px -1px #C5C5C5;
 
@@ -103,3 +106,7 @@
         opacity: 0.0;
     }
 }
+
+
+.leaflet-pane.leaflet-ie10-visual-click-pane-pane { z-index: 300; }
+
