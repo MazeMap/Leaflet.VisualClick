@@ -62,17 +62,31 @@
 
         var circle = L.circle(somewhere, 200).addTo(map);
         var marker = L.marker(somewhere, { interactive: false}).addTo(map);
+        var polygonGeoJson = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[10.403280258178711,63.416786775485015],[10.41147708892822,63.41659472992294],[10.41128396987915,63.415720906373124],[10.39926767349243,63.416085802962115],[10.399610996246338,63.41690200220483],[10.403280258178711,63.416786775485015]]]}}]};
+
+        var geoJson = L.geoJson( polygonGeoJson, { interactive: true}).addTo(map);
 
         map.toString = function(){ return "map"; };
         circle.toString = function(){ return "circle"; };
-
+        geoJson.toString = function(){ return "geoJson"; };
 
         map.on('singleclick', function(ev){
-            //console.log('singleclick', ev);
+            //stop singleclick event propagation to map, since we want to catch it here
+            L.DomEvent.stop(ev);
             var latlng = ev.latlng;
             L.popup()
               .setLatLng(latlng)
-              .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+              .setContent('<p>Hello MAP!<br />This is a nice popup on the map layer.</p>')
+              .openOn(map);
+        });
+
+        geoJson.on('singleclick', function(ev){
+            //stop singleclick event propagation to map, since we want to catch it here
+            L.DomEvent.stop(ev);
+            var latlng = ev.latlng;
+            L.popup()
+              .setLatLng(latlng)
+              .setContent('<p>Hello GeoJSON!<br />This is a nice popup on geoJson layer.</p>')
               .openOn(map);
         });
 
