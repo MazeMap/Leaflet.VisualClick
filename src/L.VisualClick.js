@@ -34,7 +34,7 @@ L.Map.VisualClick = L.Handler.extend({
 
         window.setTimeout(function(){
             if(map){
-                marker.remove();
+                map.removeLayer(marker);
             }
         }.bind(this), map.options.visualClick.removeTimeout || 450);    // Should somewhat match the css animation to prevent loops
 
