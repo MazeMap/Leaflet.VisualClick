@@ -32,3 +32,4 @@ dist/
 .gobble-watch/
 
 bower_components/
+.kateconfig

@@ -1,0 +1,7 @@
+gobblefile.js
+.gobble-build/
+.gobble-watch/
+
+bower_components/
+
+.kateconfig
