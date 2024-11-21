@@ -1,3 +1,9 @@
+# Deprecated
+
+This repository is no longer maintained and is deprecated. Please be aware that it may not work with the latest versions of its dependencies.
+
+---
+
 # Leaflet.VisualClick
 A plugin that adds visual feedback when user clicks/taps the map. Useful for when you have a delay on the clickEvents for async fetching of data, or implementation of Leaflet.singleclick - or just because it looks great :)
 
